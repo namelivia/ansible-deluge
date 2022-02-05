@@ -1,0 +1,27 @@
+---
+- name: 'Check mandatory variables are defined'
+  assert:
+    that:
+      - application_name is defined
+      - docker_network_name is defined
+      - cloudwatch_region is defined
+      - cloudwatch_log_group is defined
+
+- name: Create the dockernetwork
+  docker_network:
+    name: "{{ docker_network_name }}"
+
+- name: Create app container
+  docker_container:
+    name: "{{ application_name }}-app"
+    image: "linuxserver/deluge:arm32v7-2.0.5"
+    restart_policy: "always"
+    cleanup: true
+    pull: true
+    log_driver: "awslogs"
+    log_options:
+      awslogs-region: "{{ cloudwatch_region }}"
+      awslogs-group: "{{ cloudwatch_log_group }}"
+      awslogs-stream: "{{ application_name }}-app"
+    networks:
+      - name: "{{ docker_network_name }}"

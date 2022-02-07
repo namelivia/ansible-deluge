@@ -45,6 +45,6 @@
       - "{{ hostvars[inventory_hostname].working_directory }}{{ application_name }}/downloads:/downloads"
       - "{{ hostvars[inventory_hostname].working_directory }}{{ application_name }}/config:/config"
     env:
-      PUID: 1000
-      PGID: 1000
+      PUID: "1000"
+      PGID: "1000"
       TZ: "Europe/Madrid"

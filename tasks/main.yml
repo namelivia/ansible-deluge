@@ -7,6 +7,7 @@
       - cloudwatch_region is defined
       - cloudwatch_log_group is defined
       - deluge_downloads_folder is defined
+      - deluge_movies_folder is defined
 
 - name: Create the dockernetwork
   docker_network:
@@ -44,6 +45,7 @@
       - 6881:6881/udp
     volumes:
       - "{{ deluge_downloads_folder }}:/downloads"
+      - "{{ deluge_movies_folder }}:/movies"
       - "{{ hostvars[inventory_hostname].working_directory }}{{ application_name }}/config:/config"
     env:
       PUID: "1000"

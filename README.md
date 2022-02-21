@@ -16,3 +16,4 @@ roles:
  - `cloudwatch_region` Cloudwatch region to send the logs to.
  - `cloudwatch_log_group` Cloudwatch log group to send the logs to.
  - `deluge_downloads_folder` Path for the downloads.
+ - `deluge_movies_folder` Path for the movies.

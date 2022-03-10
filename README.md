@@ -18,3 +18,4 @@ roles:
  - `deluge_downloads_folder` Path for the downloads.
  - `deluge_movies_folder` Path for the movies.
  - `deluge_tv_folder` Path for the series.
+ - `backup_day` Day of the week in which the config will be backed up.
